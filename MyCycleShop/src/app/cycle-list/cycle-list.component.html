@@ -1,0 +1,61 @@
+<!-- <p>cycle-list works!</p> -->
+<!-- <div >
+    <p>{{cycles.id}}</p>
+    <p>{{cycles.name}}</p>
+    <p>{{cycles.stock}}</p>
+    
+</div> -->
+<!-- <div>
+    <label for="stock">Cycle stock: </label>
+    <input id="stock" [(ngModel)]="cycles.stock" placeholder="name" type="text" >
+    
+</div> -->
+
+<!-- 
+<ul class="cycles">
+    <li *ngFor="let cycle of cycles">
+            <span class="badge">{{cycle.id}}</span>
+            <span class="name">{{cycle.name}}</span>
+            <span class="stock">{{cycle.stock}}</span>
+            <form method="post" #number>
+                <button (click)="onBorrow(cycle.id,'number.value')">
+                <button (click)="onReturn(cycle.id,'number.value')">
+                <button type="submit" value="submit"></button>
+            </form>
+    </li>
+   
+</ul> -->
+
+<p>cycle-list works!</p>
+
+<div>
+
+  <h2>Cycle Shop</h2>
+
+  <button (click)="onBorrow()">Borrow Cycle</button>
+
+  <button (click)="onReturn()">Return Cycle</button>
+
+  <!-- <button (click)="restockCycle()">Restock Cycles</button> -->
+
+  <select [(ngModel)]="selectedCycleId">
+
+    <option value="0">Select a Cycle</option>
+
+    <option *ngFor="let cycle of cycles" [value]="cycle.id">{{ cycle.brand }}</option>
+
+  </select>
+
+  <ul>
+
+    <h2>Brand Borrowed Stock</h2>
+
+    <li *ngFor="let cycle of cycles">
+
+      <span>{{cycle.brand}}      {{cycle.numBorrowed}}      {{cycle.stock}}</span>  
+
+    </li>
+
+  </ul>
+
+</div>

@@ -1,0 +1,14 @@
+<p>cycle-detail works!</p>
+
+
+<div *ngIf="cycle">
+    <h2>{{cycle.brand | uppercase}} Details</h2>
+    <div>id: {{cycle.id}}</div>
+    <div>name:{{cycle.brand}}</div>
+    <div>
+      <label for="cycle-stock">Cycle stock: </label>
+      <input id="cycle-stock" [(ngModel)]="cycle.stock" placeholder="stock">
+    </div>
+  </div>
+
+  
