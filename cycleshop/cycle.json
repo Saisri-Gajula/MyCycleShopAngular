@@ -1,0 +1,101 @@
+openapi: "3.0.1"
+info:
+  version: "1.0.0"
+  title: "Cycleshope API"
+  description: "API for managing cycles in a cycle shop."
+servers:
+  - url: "localhost:8080/rest/cycle"
+paths:
+  /:
+    get:
+      summary: "List all cycles"
+      responses:
+        '200':
+          description: "A list of cycles."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Cycle"
+  /{id}/borrow:
+    get:
+      summary: "Borrow a cycle by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "count"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            default: 1
+      responses:
+        '302':
+          description: "Cycle borrowed successfully, redirect to list."
+  /{id}/return:
+    get:
+      summary: "Return a cycle by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "count"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            default: 1
+      responses:
+        '302':
+          description: "Cycle returned successfully, redirect to list."
+  /{id}/restock:
+    get:
+      summary: "Restock a cycle by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "count"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            default: 1
+      responses:
+        '302':
+          description: "Cycle restocked successfully, redirect to list."
+  /list:
+    get:
+      summary: "List available cycles"
+      responses:
+        '200':
+          description: "A list of available cycles."
+  /{id}:
+    get:
+      summary: "Get cycle details by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Cycle details."
+components:
+  schemas:
+    Cycle:
+      type: "object"
+      properties:
+        id:
+          type: string
+        name:
+          type: string

@@ -1,11 +1,11 @@
 package com.talentsprint.cycleshop.service;
 
-import java.util.ArrayList;
-import java.util.List;
+// import java.util.ArrayList;
+// import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.GrantedAuthority;
+// import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,13 +38,15 @@ public class CustomUserDetailsService implements UserDetailsService{
         var springSecurityUserEntity = User.withUsername(myUserEntity.getName())
                                             .password(
                                             myUserEntity.getPassword())
+                                            .roles(myUserEntity.getRole())
                                             .build();
         return springSecurityUserEntity;
     }
 
-    // public PasswordEncoder passwordEncoder() {
-    //     PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    //     return encoder;
-    // }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+         return encoder;
+    }
     
 }

@@ -48,7 +48,7 @@ public class RegistrationController {
         userToCreate.setPassword(userForm.getPassword());
         userService.create(userToCreate);
         attr.addFlashAttribute("result", "Registration success!");
-        return "redirect:/loginpage";
+        return "redirect:/login";
     }
 
 }
